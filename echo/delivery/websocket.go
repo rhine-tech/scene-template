@@ -3,11 +3,13 @@ package delivery
 import (
 	"github.com/aynakeya/scene"
 	"github.com/gorilla/websocket"
+	"scene-template/echo"
 
 	sws "github.com/aynakeya/scene/scenes/websocket"
 )
 
 type websocketApp struct {
+	srv echo.EchoService
 }
 
 func (e *websocketApp) Status() scene.AppStatus {
@@ -28,7 +30,7 @@ func (e *websocketApp) Create(mux sws.WebsocketMux) error {
 			if err != nil {
 				return err
 			}
-			return conn.WriteMessage(msgType, msg)
+			return conn.WriteMessage(msgType, []byte(e.srv.Echo(string(msg))))
 		}
 	})
 	return nil
@@ -38,6 +40,6 @@ func (e *websocketApp) Name() scene.AppName {
 	return "echo.app.websocket"
 }
 
-func NewWsApp() sws.WebsocketApplication {
-	return &websocketApp{}
+func NewWsApp(srv echo.EchoService) sws.WebsocketApplication {
+	return &websocketApp{srv: srv}
 }

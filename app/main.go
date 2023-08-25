@@ -4,6 +4,7 @@ import (
 	"github.com/aynakeya/scene"
 	"github.com/aynakeya/scene/engines"
 	"github.com/aynakeya/scene/registry"
+	sgrpc "github.com/aynakeya/scene/scenes/grpc"
 	sws "github.com/aynakeya/scene/scenes/websocket"
 	echo "scene-template/echo/builder"
 
@@ -36,7 +37,10 @@ func main() {
 			scene.BuildApps[sgin.GinApplication](builders)...),
 		sws.NewContainer(
 			registry.Config.GetString("scene.app.websocket.addr"),
-			scene.BuildApps[sws.WebsocketApplication](builders)...))
+			scene.BuildApps[sws.WebsocketApplication](builders)...),
+		sgrpc.NewContainer(
+			registry.Config.GetString("scene.app.grpc.addr"),
+			scene.BuildApps[sgrpc.GrpcApplication](builders)...))
 	if err := engine.Run(); err != nil {
 		registry.Logger.Errorf("engine error: %s", err)
 	}

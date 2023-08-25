@@ -3,7 +3,9 @@ SCENE_EXECUTABLE = scene-server
 protogen:
 	@find . -type d | while read -r dir; do \
 		if ls $$dir/*.proto 1> /dev/null 2>&1; then \
-			protoc --go_out=$$dir --go-grpc_out=$$dir $$dir/*.proto; \
+			cd $$dir; \
+            protoc --go_out=. --go-grpc_out=. *.proto; \
+            cd ..; \
 		fi \
 	done
 
