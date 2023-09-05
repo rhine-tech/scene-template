@@ -1,11 +1,11 @@
 package builder
 
 import (
-	"github.com/aynakeya/scene"
-	"github.com/aynakeya/scene/registry"
-	sgin "github.com/aynakeya/scene/scenes/gin"
-	sgrpc "github.com/aynakeya/scene/scenes/grpc"
-	sws "github.com/aynakeya/scene/scenes/websocket"
+	"github.com/rhine-tech/scene"
+	"github.com/rhine-tech/scene/registry"
+	sgin "github.com/rhine-tech/scene/scenes/gin"
+	sgrpc "github.com/rhine-tech/scene/scenes/grpc"
+	sws "github.com/rhine-tech/scene/scenes/websocket"
 	"scene-template/echo"
 	"scene-template/echo/delivery"
 	"scene-template/echo/service"

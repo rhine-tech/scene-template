@@ -1,21 +1,23 @@
 package main
 
 import (
-	"github.com/aynakeya/scene"
-	"github.com/aynakeya/scene/engines"
-	"github.com/aynakeya/scene/registry"
-	sgrpc "github.com/aynakeya/scene/scenes/grpc"
-	sws "github.com/aynakeya/scene/scenes/websocket"
+	"github.com/rhine-tech/scene"
+	"github.com/rhine-tech/scene/engines"
+	authentication "github.com/rhine-tech/scene/lens/middlewares/authentication/builder"
+	permission "github.com/rhine-tech/scene/lens/middlewares/permission/builder"
+	"github.com/rhine-tech/scene/registry"
+	sgrpc "github.com/rhine-tech/scene/scenes/grpc"
+	sws "github.com/rhine-tech/scene/scenes/websocket"
 	echo "scene-template/echo/builder"
 
-	config "github.com/aynakeya/scene/lens/infrastructure/config/builder"
+	config "github.com/rhine-tech/scene/lens/infrastructure/config/builder"
 
-	asynctask "github.com/aynakeya/scene/lens/infrastructure/asynctask/builder"
-	datasource "github.com/aynakeya/scene/lens/infrastructure/datasource/builder"
-	ingestion "github.com/aynakeya/scene/lens/infrastructure/ingestion/builder"
-	logger "github.com/aynakeya/scene/lens/infrastructure/logger/builder"
+	asynctask "github.com/rhine-tech/scene/lens/infrastructure/asynctask/builder"
+	datasource "github.com/rhine-tech/scene/lens/infrastructure/datasource/builder"
+	ingestion "github.com/rhine-tech/scene/lens/infrastructure/ingestion/builder"
+	logger "github.com/rhine-tech/scene/lens/infrastructure/logger/builder"
 
-	sgin "github.com/aynakeya/scene/scenes/gin"
+	sgin "github.com/rhine-tech/scene/scenes/gin"
 )
 
 const configFile = ".env.dev"
@@ -28,6 +30,8 @@ func main() {
 		datasource.Builder{},
 		ingestion.DummyBuilder{},
 		echo.Builder{},
+		permission.Builder{},
+		authentication.Builder{},
 	}
 	scene.BuildInitArray(builders).Inits()
 	registry.Logger.Infof("using config file: %s", configFile)

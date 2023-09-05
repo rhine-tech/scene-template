@@ -2,11 +2,11 @@ package delivery
 
 import (
 	context "context"
-	"github.com/aynakeya/scene"
+	"github.com/rhine-tech/scene"
 	grpc "google.golang.org/grpc"
 	"scene-template/echo"
 
-	sgrpc "github.com/aynakeya/scene/scenes/grpc"
+	sgrpc "github.com/rhine-tech/scene/scenes/grpc"
 )
 
 type grpcApp struct {

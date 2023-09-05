@@ -1,11 +1,11 @@
 package delivery
 
 import (
-	"github.com/aynakeya/scene"
 	"github.com/gorilla/websocket"
+	"github.com/rhine-tech/scene"
 	"scene-template/echo"
 
-	sws "github.com/aynakeya/scene/scenes/websocket"
+	sws "github.com/rhine-tech/scene/scenes/websocket"
 )
 
 type websocketApp struct {

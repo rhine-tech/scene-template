@@ -1,12 +1,12 @@
 package delivery
 
 import (
-	"github.com/aynakeya/scene"
 	"github.com/gin-gonic/gin"
+	"github.com/rhine-tech/scene"
 	"net/http"
 	"scene-template/echo"
 
-	sgin "github.com/aynakeya/scene/scenes/gin"
+	sgin "github.com/rhine-tech/scene/scenes/gin"
 )
 
 type ginApp struct {
